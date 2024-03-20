@@ -1,0 +1,16 @@
+version: "3"
+services:
+  multiplayer:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: ftbl_mp
+    env_file: .env.production
+    environment:
+      - NODE_ENV=$NODE_ENV
+      - PORT=$PORT
+      - PLAYERS_IN_ROOM=$PLAYERS_IN_ROOM
+      - ALLOWED_ORIGINS=$ALLOWED_ORIGINS
+    ports:
+      - "8080:8080"
+    restart: unless-stopped
